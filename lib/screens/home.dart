@@ -25,16 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/images/img5.png',
   ];
 
-  void _changeImage() async {
-    while (true) {
-      await Future.delayed(const Duration(milliseconds: 2200));
-      setState(() {
-        imageIndex = Random().nextInt(_images.length);
-        currentImage = _images[imageIndex];
-      });
-    }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -49,9 +39,21 @@ class _HomeScreenState extends State<HomeScreen> {
     _confettiController.dispose();
   }
 
+  void _changeImage() async {
+    while (true) {
+      await Future.delayed(const Duration(milliseconds: 2300));
+      setState(() {
+        imageIndex = Random().nextInt(_images.length);
+        currentImage = _images[imageIndex];
+      });
+    }
+  }
+
+
   void _showConfettiAnimation() async {
+    await Future.delayed(const Duration(milliseconds: 1400));
     _confettiController.play();
-    await Future.delayed(const Duration(milliseconds: 2000));
+    await Future.delayed(const Duration(milliseconds: 2500));
     _confettiController.stop();
   }
 
@@ -97,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildNeonText() {
     return const NeonText(
-      text: 'Happy BirthDay\n Pratha ❤️',
+      text: 'Happy Birthday\n Pratha ❤️',
       fontStyle: FontStyle.italic,
       spreadColor: Colors.red,
       textColor: Colors.red,
